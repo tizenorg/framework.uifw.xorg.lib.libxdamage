@@ -1,8 +1,8 @@
 
-Name:       libXdamage
+Name:       libxdamage
 Summary:    X.Org X11 libXdamage runtime library
 Version:    1.1.3
-Release:    0
+Release:    2.3
 Group:      System/Libraries
 License:    MIT
 URL:        http://www.x.org
@@ -33,7 +33,7 @@ Description: %{summary}
 
 
 %build
-
+export LDFLAGS+=" -Wl,--hash-style=both -Wl,--as-needed"
 %reconfigure --disable-static
 # Call make instruction with smp support
 make %{?jobs:-j%jobs}

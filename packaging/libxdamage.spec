@@ -7,6 +7,7 @@ Group:      System/Libraries
 License:    MIT
 URL:        http://www.x.org
 Source0:    http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.gz
+Source1001: packaging/libxdamage.manifest 
 Requires(post):  /sbin/ldconfig
 Requires(postun):  /sbin/ldconfig
 BuildRequires:  pkgconfig(x11)
@@ -33,6 +34,7 @@ Description: %{summary}
 
 
 %build
+cp %{SOURCE1001} .
 export LDFLAGS+=" -Wl,--hash-style=both -Wl,--as-needed"
 %reconfigure --disable-static
 # Call make instruction with smp support
@@ -55,6 +57,7 @@ rm -rf %{buildroot}
 
 
 %files
+%manifest libxdamage.manifest
 %defattr(-,root,root,-)
 %doc COPYING
 %{_libdir}/libXdamage.so.1
@@ -62,6 +65,7 @@ rm -rf %{buildroot}
 
 
 %files devel
+%manifest libxdamage.manifest
 %defattr(-,root,root,-)
 %doc AUTHORS README ChangeLog
 %dir %{_includedir}/X11

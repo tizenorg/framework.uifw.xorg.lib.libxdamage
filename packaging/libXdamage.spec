@@ -19,7 +19,7 @@ X.Org X11 libXdamage runtime library.
 %package devel
 Summary: Development files for %{name}
 Group: Development/Libraries
-Provides: libxdamage-devel 
+Provides: libxdamage-devel
 Requires: %{name} = %{version}-%{release}
 
 %description devel
@@ -35,7 +35,8 @@ make %{?jobs:-j%jobs}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
+mkdir -p %{buildroot}/usr/share/license
+cp -af COPYING %{buildroot}/usr/share/license/%{name}
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 
 # We intentionally don't ship *.la files
@@ -51,7 +52,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS COPYING README ChangeLog
+/usr/share/license/%{name}
+#%doc AUTHORS COPYING README ChangeLog
 %{_libdir}/libXdamage.so.1
 %{_libdir}/libXdamage.so.1.1.0
 

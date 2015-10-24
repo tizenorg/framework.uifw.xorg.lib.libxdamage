@@ -1,6 +1,6 @@
 Summary: X Damage extension library
 Name: libXdamage
-Version: 1.1.3
+Version: 1.1.4
 Release: 3
 License: MIT
 Group: System Environment/Libraries
